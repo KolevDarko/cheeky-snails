@@ -59,7 +59,7 @@ const Faq = () => {
                 </span>
               </div>
               <AnimatePresence>
-                {index == view ? (
+                {index === view ? (
                   <>
                     <motion.div
                       transition={{ type: "spring", stiffness: 80 }}
