@@ -11,10 +11,16 @@ import MintNft from "../components/MintNft";
 import Lap from "../components/Lap";
 import Footer from "../components/Footer";
 import SnailSlider from "../components/SnailSlider";
+import { Web3ReactProvider } from "@web3-react/core";
+import { Web3Provider } from "@ethersproject/providers";
+
+const getLibrary = (provider) => {
+  return new Web3Provider(provider);
+};
 
 const Home = () => {
   return (
-    <>
+    <Web3ReactProvider getLibrary={getLibrary}>
       <Header />
       <Hero />
       <SnailSlider />
@@ -27,7 +33,7 @@ const Home = () => {
       <Faq />
       <Footer />
       <BackToTop />
-    </>
+    </Web3ReactProvider>
   );
 };
 

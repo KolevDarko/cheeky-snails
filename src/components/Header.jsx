@@ -3,6 +3,7 @@ import { useScreenFixedProvider } from "../contexts/ScreenFixedProvider";
 import { useMediaQuery } from "react-responsive";
 import { headerData } from "./common/data";
 import logo from "../assets/img/logo.png";
+import { useWeb3React } from "@web3-react/core";
 
 const Header = () => {
   const { showOverlay, setShowOverlay } = useScreenFixedProvider();
@@ -15,6 +16,8 @@ const Header = () => {
     const isDesktop = useMediaQuery({ minWidth: 992 });
     return isDesktop ? children : null;
   };
+
+  const web3React = useWeb3React();
 
   return (
     <>
@@ -131,8 +134,8 @@ const Header = () => {
 
             <nav className="navbar h-86 navbar-expand-lg navbar-light py-3  p-sm-3 w-100">
               <div className="d-flex justify-content-between w-100 align-items-center list-unstyled">
-                <a href="">
-                  <img className="nav-logo" src={logo} alt="" />
+                <a href="https://cheekysnails.com">
+                  <img className="nav-logo" src={logo} alt="logo" />
                 </a>
                 <div>
                   <button className="connect-wallet">Connect wallet</button>
