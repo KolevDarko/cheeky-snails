@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
         <div className="copyright-text">
           <p className="hero-small-para ff-gilory mb-0 text-center mt-1 pt-3 pb-4">
-            Copyright@CheekySnails.com
+            Copyright 2022 CheekySnails.com
           </p>
         </div>
       </section>
