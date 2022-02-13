@@ -16,16 +16,25 @@ const Header = () => {
     const isDesktop = useMediaQuery({ minWidth: 992 });
     return isDesktop ? children : null;
   };
-  const { connector, library, chainId, account, activate, active, error } =
+  const { connector, network, chainId, account, activate, active } =
     useWeb3React();
 
   const [accountShort, setAccountShort] = React.useState("");
+  const [networkConnectInfo, setNetworkConnectInfo] = React.useState("");
+  const [isWrongNetwork, setWrongNetwork] = React.useState(false);
+
   React.useEffect(() => {
     if (account) {
       const newAccountShort = `${account.slice(0, 5)} ... ${account.slice(-3)}`;
       setAccountShort(newAccountShort);
     }
-  }, [account]);
+    if (chainId) {
+      if (chainId !== 1) {
+        setNetworkConnectInfo("Wrong network, connect to Ethereum mainnet");
+        setWrongNetwork(true);
+      }
+    }
+  }, [account, chainId]);
 
   const [activatingConnector, setActivatingConnector] = React.useState();
   React.useEffect(() => {
@@ -41,6 +50,10 @@ const Header = () => {
         setActivatingConnector(undefined);
       }
     });
+  };
+
+  const switchNetwork = async () => {
+    await injected.changeNetwork(1);
   };
 
   return (
