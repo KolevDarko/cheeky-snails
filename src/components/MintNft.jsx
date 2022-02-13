@@ -75,6 +75,7 @@ const MintNft = () => {
                     placeholder="0"
                     type="text"
                     value={mintValue}
+                    readOnly
                   />
                 </div>
 

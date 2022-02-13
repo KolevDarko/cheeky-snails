@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { headerData } from "./common/data";
 import logo from "../assets/img/logo.png";
 import { useWeb3React } from "@web3-react/core";
-
+import { injected } from "./common/connectors";
 const Header = () => {
   const { showOverlay, setShowOverlay } = useScreenFixedProvider();
 
@@ -16,20 +16,39 @@ const Header = () => {
     const isDesktop = useMediaQuery({ minWidth: 992 });
     return isDesktop ? children : null;
   };
+  const { connector, library, chainId, account, activate, active, error } =
+    useWeb3React();
 
-  const web3React = useWeb3React();
+  const [accountShort, setAccountShort] = React.useState("");
+  React.useEffect(() => {
+    if (account) {
+      const newAccountShort = `${account.slice(0, 5)} ... ${account.slice(-3)}`;
+      setAccountShort(newAccountShort);
+    }
+  }, [account]);
+
+  const [activatingConnector, setActivatingConnector] = React.useState();
+  React.useEffect(() => {
+    if (activatingConnector && activatingConnector === connector) {
+      setActivatingConnector(undefined);
+    }
+  }, [activatingConnector, connector]);
+
+  const connectMetamask = () => {
+    setActivatingConnector(injected);
+    activate(injected, (error) => {
+      if (error) {
+        setActivatingConnector(undefined);
+      }
+    });
+  };
 
   return (
     <>
       <section className="d-flex w-100 navbar-wrapper justify-content-between py-md-3 bg-black">
         <div className="container">
           <Desktop>
-            <div
-              className="d-flex w-100 align-items-center justify-content-between list-unstyled"
-              data-aos="flip-down"
-              data-aos-delay="500"
-              data-aos-duration="1000"
-            >
+            <div className="d-flex w-100 align-items-center justify-content-between list-unstyled">
               <li>
                 <img src={logo} alt="logo" />
               </li>
@@ -39,7 +58,7 @@ const Header = () => {
                     <li
                       key={index}
                       className={`mx-2 mx-xl-3 nav-list-items p-2 d-inline-block ${
-                        index == 0 ? "active" : ""
+                        index === 0 ? "active" : ""
                       }`}
                     >
                       <a href={`#${item.url}`}>{item.title}</a>
@@ -47,7 +66,18 @@ const Header = () => {
                   ))}
                 </div>{" "}
                 <div>
-                  <button className="connect-wallet">Connect wallet</button>
+                  {active ? (
+                    <button className="connect-wallet connect-wallet-sm">
+                      {accountShort}
+                    </button>
+                  ) : (
+                    <button
+                      className="connect-wallet"
+                      onClick={connectMetamask}
+                    >
+                      Connect wallet
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
