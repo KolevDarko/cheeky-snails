@@ -1,12 +1,15 @@
 import React from "react";
 import { useScreenFixedProvider } from "../contexts/ScreenFixedProvider";
+import { useAuthProvider } from "../contexts/AuthProvider";
 import { useMediaQuery } from "react-responsive";
 import { headerData } from "./common/data";
 import logo from "../assets/img/logo.png";
 import { useWeb3React } from "@web3-react/core";
-import { injected } from "./common/connectors";
+const ethers = require("ethers");
+
 const Header = () => {
   const { showOverlay, setShowOverlay } = useScreenFixedProvider();
+  const { signer, setSigner } = useAuthProvider();
 
   const BeforeDesktop = ({ children }) => {
     const isBeforeDesktop = useMediaQuery({ maxWidth: 991.98 });
@@ -16,25 +19,26 @@ const Header = () => {
     const isDesktop = useMediaQuery({ minWidth: 992 });
     return isDesktop ? children : null;
   };
-  const { connector, network, chainId, account, activate, active } =
-    useWeb3React();
+  const { connector, network, chainId, account, activate } = useWeb3React();
 
   const [accountShort, setAccountShort] = React.useState("");
+  const [active, setActive] = React.useState(false);
   const [networkConnectInfo, setNetworkConnectInfo] = React.useState("");
   const [isWrongNetwork, setWrongNetwork] = React.useState(false);
 
   React.useEffect(() => {
-    if (account) {
-      const newAccountShort = `${account.slice(0, 5)} ... ${account.slice(-3)}`;
+    if (signer && signer._address) {
+      const addr = signer._address;
+      const newAccountShort = `${addr.slice(0, 5)} ... ${addr.slice(-3)}`;
       setAccountShort(newAccountShort);
     }
-    if (chainId) {
-      if (chainId !== 1) {
-        setNetworkConnectInfo("Wrong network, connect to Ethereum mainnet");
-        setWrongNetwork(true);
-      }
-    }
-  }, [account, chainId]);
+    // if (chainId) {
+    //   if (chainId !== 1) {
+    //     setNetworkConnectInfo("Wrong network, connect to Ethereum mainnet");
+    //     setWrongNetwork(true);
+    //   }
+    // }
+  }, [signer]);
 
   const [activatingConnector, setActivatingConnector] = React.useState();
   React.useEffect(() => {
@@ -43,17 +47,22 @@ const Header = () => {
     }
   }, [activatingConnector, connector]);
 
-  const connectMetamask = () => {
-    setActivatingConnector(injected);
-    activate(injected, (error) => {
-      if (error) {
-        setActivatingConnector(undefined);
-      }
-    });
-  };
-
-  const switchNetwork = async () => {
-    await injected.changeNetwork(1);
+  const connectMetamask = async () => {
+    // setActivatingConnector(injected);
+    // activate(injected, (error) => {
+    // if (error) {
+    // setActivatingConnector(undefined);
+    // }
+    // });
+    if (!window.ethereum) {
+      alert("Install metamask first");
+      return;
+    }
+    const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+    const [account0] = await provider.send("eth_requestAccounts", []);
+    const _signer = provider.getSigner(account0);
+    setSigner(_signer);
+    setActive(true);
   };
 
   return (

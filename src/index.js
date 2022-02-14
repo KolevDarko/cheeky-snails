@@ -9,11 +9,14 @@ import "aos/dist/aos.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ScreenFixedProvider from "./contexts/ScreenFixedProvider";
+import AuthProvider from "./contexts/AuthProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <ScreenFixedProvider>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </ScreenFixedProvider>
   </React.StrictMode>,
   document.getElementById("root")

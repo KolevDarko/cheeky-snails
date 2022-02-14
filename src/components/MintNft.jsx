@@ -2,20 +2,72 @@ import React, { useState } from "react";
 import mintNftimg from "../assets/img/mint-nft.png";
 import { MinusIcon, PlusIcon } from "./common/Icons";
 import rightshade from "../assets/img/right-shadow-2.png";
+import { useWeb3React } from "@web3-react/core";
+import { ethers } from "ethers";
+import { useAuthProvider } from "../contexts/AuthProvider";
+
+const artifact = require("./abi.json");
+const snailsContractAddress = "0xd7845aD98B7A7565AE851f81eDB8Dc3Ef443d136";
 
 const MintNft = () => {
   const [mintValue, setMintValue] = useState(0);
+  const [snailsContract, setSnailsContract] = useState(null);
+  const { signer } = useAuthProvider();
 
-  // FOR  INCREASE MINT VALUE
   function handleIncreaseMintValue() {
     setMintValue(mintValue + 1);
   }
 
-  // FOR  DECREASE MINT VALUE
   function handleDecreaseMintValue() {
     if (mintValue > 0) {
       setMintValue(mintValue - 1);
     }
+  }
+  const { chainId } = useWeb3React();
+  React.useEffect(() => {
+    if (signer) {
+      const currentContract = new ethers.Contract(
+        snailsContractAddress,
+        artifact.abi,
+        signer
+      );
+      setSnailsContract(currentContract);
+    }
+  }, [signer]);
+
+  const [tokenPrice, setTokenPrice] = useState("100");
+  const [supply, setSupply] = useState(0);
+  const [currentPriceLeft, setCurrentPriceLeft] = useState(0);
+
+  const checkSupply = async () => {
+    const mintedSupplyBN = await snailsContract.totalSupply();
+    const mintedSupply = parseInt(mintedSupplyBN.toString());
+    setSupply(mintedSupply);
+    if (mintedSupply < 777) {
+      setTokenPrice("0");
+      const tokensLeft = 777 - mintedSupply;
+      setCurrentPriceLeft(tokensLeft.toString());
+    } else if (mintedSupply < 2000) {
+      setTokenPrice("0.01");
+      const tokensLeft = 2000 - mintedSupply;
+      setCurrentPriceLeft(tokensLeft.toString());
+    } else {
+      const tokensLeft = 7777 - mintedSupply;
+      setCurrentPriceLeft(tokensLeft.toString());
+      setTokenPrice("0.02");
+    }
+  };
+
+  async function mintNow() {
+    // Can put better error message below mint button directly
+    if (!signer) {
+      alert("Connect Metamask first");
+    }
+    if (chainId !== 1) {
+      alert("Wrong network. Change to Ethereum mainnet in Metamask");
+    }
+    const totalPrice = ethers.utils.parseEther(tokenPrice) * mintValue;
+    await snailsContract.mint(mintValue, { value: totalPrice });
   }
 
   return (
@@ -43,18 +95,24 @@ const MintNft = () => {
               <h2 className="heading text-white ff-potta mb-3">Mint NFT</h2>
               <div className="d-flex justify-content-between mt-lg-5">
                 <div>
-                  <h3 className="fs-md text-white ff-potta">6000 minted</h3>
-                  <p className="para-normal text-white mb-0">of 10,000</p>
+                  <h3 className="fs-md text-white ff-potta">{supply} minted</h3>
+                  <p className="para-normal text-white mb-0">of 7,777</p>
                   <div className="mt-lg-5 mt-4">
-                    <h3 className="fs-md text-white ff-potta">Max 3 NFTs</h3>
+                    <h3 className="fs-md text-white ff-potta">Max 20 NFTs</h3>
                     <p className="para-normal text-white">per transaction</p>
                   </div>
                 </div>
                 <div>
-                  <h3 className="fs-md text-white ff-potta">.2 ETH</h3>
-                  <p className="para-normal text-white mb-0">per NFT</p>
+                  <h3 className="fs-md text-white ff-potta">
+                    Price: {tokenPrice} ETH
+                  </h3>
+                  <p className="para-normal text-white mb-0">
+                    per NFT({currentPriceLeft} left at this price!)
+                  </p>
                   <div className="mt-lg-5 mt-4">
-                    <h3 className="fs-md text-white ff-potta">Transaction</h3>
+                    <h3 className="fs-md text-white ff-potta">
+                      20 Transactions
+                    </h3>
                     <p className="para-normal text-white">per wallet</p>
                   </div>
                 </div>
@@ -89,7 +147,18 @@ const MintNft = () => {
                 </div>
               </div>{" "}
               <div className="mt-5 text-center text-lg-start">
-                <button className="connect-wallet">Mint Now</button>
+                <button className="connect-wallet" onClick={() => mintNow()}>
+                  Mint Now
+                </button>
+                <button
+                  className="connect-wallet"
+                  onClick={() => checkSupply()}
+                >
+                  Check Supply
+                </button>
+                <div>
+                  Minted so far: {supply}. Price: {tokenPrice}
+                </div>
               </div>
             </div>
           </div>
