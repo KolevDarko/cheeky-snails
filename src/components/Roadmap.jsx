@@ -35,16 +35,14 @@ const Roadmap = () => {
                 <img src={roadmapCircle} alt="" />
                 <h2 className="roadmap-circle-text">25%</h2>
               </div>
-              <p className="para-normal mt-lg-4">Rarity Sniper listing</p>
+              <p className="para-normal mt-lg-4">Meme competition</p>
             </div>
             <div className="text-center px-2">
               <div className="position-relative custom-shadow line">
                 <img src={roadmapCircle} alt="" />
                 <h2 className="roadmap-circle-text">50%</h2>
               </div>
-              <p className="para-normal mt-lg-4">
-                Physical art and merch store
-              </p>
+              <p className="para-normal mt-lg-4">Rarity Tools listing</p>
             </div>
             <div className="text-center px-2">
               <div className="position-relative custom-shadow line">
@@ -58,7 +56,9 @@ const Roadmap = () => {
                 <img src={roadmapCircle} alt="" />
                 <h2 className="roadmap-circle-text">100%</h2>
               </div>
-              <p className="para-normal mt-lg-4">Charity donation</p>
+              <p className="para-normal mt-lg-4">
+                Physical art and merch store
+              </p>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ const Roadmap = () => {
               </div>
             </div>
             <div className="col-8">
-              <p className="para-normal mt-4 mb-0">Rarity Sniper listing</p>
+              <p className="para-normal mt-4 mb-0">Meme competition</p>
             </div>
           </div>
           <div className="row">
@@ -102,9 +102,7 @@ const Roadmap = () => {
               </div>
             </div>
             <div className="col-8">
-              <p className="para-normal mt-4 mb-0">
-                Physical art and merch store
-              </p>
+              <p className="para-normal mt-4 mb-0">Rarity Tools listing</p>
             </div>
           </div>
           <div className="row">
@@ -129,7 +127,9 @@ const Roadmap = () => {
               </div>
             </div>
             <div className="col-8">
-              <p className="para-normal mt-4 mb-0">Charity donation</p>
+              <p className="para-normal mt-4 mb-0">
+                Physical art and merch store
+              </p>
             </div>
           </div>
         </div>

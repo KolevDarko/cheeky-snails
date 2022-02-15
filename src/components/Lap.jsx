@@ -31,7 +31,14 @@ const Lap = () => {
                     Lap 1 - Token and Staking
                   </h1>
                   <p className="team-para ff-gilory">
-                    This one is for those with big hearts. We came up with the idea of reminding people that we have to give some, to get some. It's the basic rule of the universe. Of course, there will be a token, but it’s not an ordinary token. Every Cheeky Snail owner will be eligible to claim the $SLIME, but with an option to choose between claiming, staking, or donating. Those who decide to donate their tokens are up for a very fun ride. But let’s keep some mystery for later.
+                    This one is for those with big hearts. We came up with the
+                    idea of reminding people that we have to give some, to get
+                    some. It's the basic rule of the universe. Of course, there
+                    will be a token, but it’s not an ordinary token. Every
+                    Cheeky Snail owner will be eligible to claim the $SLIME, but
+                    with an option to choose between claiming, staking, or
+                    donating. Those who decide to donate their tokens are up for
+                    a very fun ride. But let’s keep some mystery for later.
                   </p>
                 </div>
               </div>
@@ -51,7 +58,15 @@ const Lap = () => {
                     Lap 2 - Pixel Snails & Web3 preparation
                   </h1>
                   <p className="team-para ff-gilory">
-                    Very shortly after the Cheeky Snails find their homes, we are launching another collection of exactly the same snails, but pixelated. These little fellas will be free of charge for the holders of Cheeky Snails. The next step will be the integration of these fellas into the worldwidewebb metaverse as pets. Over there, you will be able to train and battle your snail vs other player's pets in the metaverse.
+                    Very shortly after the Cheeky Snails find their homes, we
+                    are launching another collection of exactly the same snails,
+                    but pixelated. These little fellas will be free of charge
+                    for the holders of Cheeky Snails. The next step will be the
+                    integration of these fellas into the metaverse. For example,
+                    we will buy a land for our business and fully integrate
+                    cheeky snails as pets in the world wide metaverse. Over
+                    there, each owner will be able to train and battle his snail
+                    vs other player's pets.
                   </p>
                 </div>
               </div>
@@ -71,7 +86,13 @@ const Lap = () => {
                     Lap 3 – Breeding
                   </h1>
                   <p className="team-para ff-gilory">
-                    Some snails are cheekier than others but fear not if you missed getting the cheeky one you like. You will be able to make a perfect combination with breeding the best two snails you have, or maybe you can just upgrade your robot snail with some new cool wheels using a potion. There will be limitless combinations, and we promise it’s going to be beneficial and most important, FUN.
+                    Some snails are cheekier than others but fear not if you
+                    missed getting the cheeky one you like. You will be able to
+                    make a perfect combination with breeding the best two snails
+                    you have, or maybe you can just upgrade your robot snail
+                    with some new cool wheels using a potion. There will be
+                    limitless combinations, and we promise it’s going to be
+                    beneficial and most important, FUN.
                   </p>
                 </div>
               </div>
@@ -91,7 +112,11 @@ const Lap = () => {
                     Lap 4 – DAO
                   </h1>
                   <p className="team-para ff-gilory">
-                    As a community governed project, we need a decentralized way of making important decisions. That is why we are going to build a DAO voting mechanism to make sure that our exclusive owners will be taking part in the way this project develops in the future.
+                    As a community governed project, we need a decentralized way
+                    of making important decisions. That is why we are going to
+                    build a DAO voting mechanism to make sure that our exclusive
+                    owners will be taking part in the way this project develops
+                    in the future.
                   </p>
                 </div>
               </div>

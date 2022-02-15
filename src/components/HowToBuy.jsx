@@ -61,8 +61,7 @@ const HowToBuy = () => {
                   <p className="para-normal ff-gilory fw-medium mb-0">4.</p>
                   <p className="para-normal ff-gilory fw-medium mb-0 ms-1">
                     On launch day open cheeky snails website and select the
-                    number of N NFTs you wish to mint – up to 10 per
-                    transaction.
+                    number of NFTs you wish to mint – up to 20 per transaction.
                   </p>
                 </div>
 
@@ -85,7 +84,7 @@ const HowToBuy = () => {
                   <p className="para-normal ff-gilory fw-medium mb-0">7.</p>
                   <p className="para-normal ff-gilory fw-medium mb-0 ms-1">
                     Once you have made your purchase, your Cheeky Snail will
-                    appear in V your wallet and on OpenSea!
+                    appear in your wallet and on OpenSea!
                   </p>
                 </div>
               </div>

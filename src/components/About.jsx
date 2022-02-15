@@ -19,14 +19,26 @@ const About = () => {
           <div className="about-card">
             <h2 className="about-heading mb-sm-4">About Project</h2>
             <p className="para-normal ff-gilory">
-              Cheeky Snails will be a truly community governed nft collection.
-              The basic idea of crypto is decentralization and we will implement
-              that core principle into this project. So the team will take
-              minimum of the profits and majority of them will be for the
-              development of the project. Also team will take 0% royalties. 100
-              nfts will be held in the treasury of which 50 will be used for
-              giveaways and 50 will be awarded to the members that lost their
-              snail in a proven scam.
+              After months of hard work and gathering data, our cheeky snails
+              are ready and lined up on their starting position, waiting on your
+              sign to begin the race. Each snail is a unique combination of
+              skin, eyes, mouth, shell and special object beneath and above!
+              <br />
+              All of the snails are cheeky, but some are cheekier than others.
+              That depends on the rarity of the traits it has. Some have lava
+              skin, and some have a rocket built on the shell. Some are with
+              awesome sunglasses, while others smoke some straaange cigarettes.
+              Hmm… most of them are warm-hearted and cheerful, with a very few
+              exceptions that are remarkably bad! As they are the most
+              persistent creatures, snails prevail in almost every habitat we
+              know. They are out in the garden, city, jungle, forest, field,
+              river bank, desert, and even Antarctica and space! Some mysterious
+              sources say they even exist on the b l o c k c h a i n...
+            </p>
+            <p className="para-normal ff-gilory">
+              The race starts as soon as our cheeky snails find their new
+              owners. Treat them with respect, and they might surprise you with
+              something from under their shell!
             </p>
           </div>
         </div>
