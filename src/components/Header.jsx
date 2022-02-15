@@ -4,12 +4,12 @@ import { useAuthProvider } from "../contexts/AuthProvider";
 import { useMediaQuery } from "react-responsive";
 import { headerData } from "./common/data";
 import logo from "../assets/img/logo.png";
-import { useWeb3React } from "@web3-react/core";
 const ethers = require("ethers");
 
 const Header = () => {
   const { showOverlay, setShowOverlay } = useScreenFixedProvider();
-  const { signer, setSigner } = useAuthProvider();
+  const { signer, setSigner, setProvider, provider, networkId, setNetworkId } =
+    useAuthProvider();
 
   const BeforeDesktop = ({ children }) => {
     const isBeforeDesktop = useMediaQuery({ maxWidth: 991.98 });
@@ -19,51 +19,60 @@ const Header = () => {
     const isDesktop = useMediaQuery({ minWidth: 992 });
     return isDesktop ? children : null;
   };
-  const { connector, network, chainId, account, activate } = useWeb3React();
+  // const { connector, network, chainId, account, activate } = useWeb3React();
 
   const [accountShort, setAccountShort] = React.useState("");
   const [active, setActive] = React.useState(false);
-  const [networkConnectInfo, setNetworkConnectInfo] = React.useState("");
-  const [isWrongNetwork, setWrongNetwork] = React.useState(false);
+  // const [networkConnectInfo, setNetworkConnectInfo] = React.useState("");
+  // const [isWrongNetwork, setWrongNetwork] = React.useState(false);
 
   React.useEffect(() => {
     if (signer && signer._address) {
       const addr = signer._address;
-      const newAccountShort = `${addr.slice(0, 5)} ... ${addr.slice(-3)}`;
+      const newAccountShort = `${addr.slice(0, 5)}...${addr.slice(-3)}`;
       setAccountShort(newAccountShort);
     }
-    // if (chainId) {
-    //   if (chainId !== 1) {
-    //     setNetworkConnectInfo("Wrong network, connect to Ethereum mainnet");
-    //     setWrongNetwork(true);
-    //   }
-    // }
-  }, [signer]);
-
-  const [activatingConnector, setActivatingConnector] = React.useState();
-  React.useEffect(() => {
-    if (activatingConnector && activatingConnector === connector) {
-      setActivatingConnector(undefined);
+    if (window.ethereum && !provider) {
+      const _provider = new ethers.providers.Web3Provider(
+        window.ethereum,
+        "any"
+      );
+      setProvider(_provider);
     }
-  }, [activatingConnector, connector]);
+  }, [signer, networkId, setProvider, provider]);
+
+  window.ethereum.on("accountsChanged", function (accounts) {
+    const newSignerAddr = accounts[0];
+    if (provider) {
+      const newSigner = provider.getSigner(newSignerAddr);
+      setSigner(newSigner);
+    }
+  });
+
+  window.ethereum.on("networkChanged", function (networkId) {
+    setNetworkId(networkId);
+  });
 
   const connectMetamask = async () => {
-    // setActivatingConnector(injected);
-    // activate(injected, (error) => {
-    // if (error) {
-    // setActivatingConnector(undefined);
-    // }
-    // });
     if (!window.ethereum) {
       alert("Install metamask first");
       return;
     }
-    const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-    const [account0] = await provider.send("eth_requestAccounts", []);
-    const _signer = provider.getSigner(account0);
-    setSigner(_signer);
-    setActive(true);
+    const _provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+    setProvider(_provider);
   };
+
+  React.useEffect(() => {
+    const initSigner = async () => {
+      if (provider) {
+        const [account0] = await provider.send("eth_requestAccounts", []);
+        const _signer = provider.getSigner(account0);
+        setSigner(_signer);
+        setActive(true);
+      }
+    };
+    initSigner();
+  }, [provider, setSigner]);
 
   return (
     <>

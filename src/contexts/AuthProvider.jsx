@@ -7,9 +7,18 @@ export function useAuthProvider() {
 }
 
 export default function AuthProvider({ children }) {
-  const [signer, setSigner] = useState(false);
+  const [signer, setSigner] = useState();
+  const [provider, setProvider] = useState();
+  const [networkId, setNetworkId] = useState(0);
 
-  const contextState = { signer, setSigner };
+  const contextState = {
+    signer,
+    setSigner,
+    networkId,
+    setNetworkId,
+    provider,
+    setProvider,
+  };
 
   return (
     <AuthProviderContext.Provider value={contextState}>

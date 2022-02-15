@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import mintNftimg from "../assets/img/mint-nft.png";
 import { MinusIcon, PlusIcon } from "./common/Icons";
 import rightshade from "../assets/img/right-shadow-2.png";
-import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import { useAuthProvider } from "../contexts/AuthProvider";
 
@@ -12,18 +11,30 @@ const snailsContractAddress = "0xd7845aD98B7A7565AE851f81eDB8Dc3Ef443d136";
 const MintNft = () => {
   const [mintValue, setMintValue] = useState(0);
   const [snailsContract, setSnailsContract] = useState(null);
-  const { signer } = useAuthProvider();
+  const { signer, networkId } = useAuthProvider();
+  const [valueError, setValueError] = useState();
 
   function handleIncreaseMintValue() {
-    setMintValue(mintValue + 1);
+    if (mintValue < 20) {
+      const intValue = parseInt(mintValue);
+      if (isNaN(intValue)) {
+        setValueError("Amount is not a number");
+      } else {
+        setMintValue(intValue + 1);
+      }
+    }
   }
 
   function handleDecreaseMintValue() {
     if (mintValue > 0) {
-      setMintValue(mintValue - 1);
+      const intValue = parseInt(mintValue);
+      if (isNaN(intValue)) {
+        setValueError("Amount is not a number");
+      } else {
+        setMintValue(intValue - 1);
+      }
     }
   }
-  const { chainId } = useWeb3React();
   React.useEffect(() => {
     if (signer) {
       const currentContract = new ethers.Contract(
@@ -35,16 +46,23 @@ const MintNft = () => {
     }
   }, [signer]);
 
-  const [tokenPrice, setTokenPrice] = useState("100");
+  const [tokenPrice, setTokenPrice] = useState("");
   const [supply, setSupply] = useState(0);
   const [currentPriceLeft, setCurrentPriceLeft] = useState(0);
+  const [userBalance, setUserBalance] = useState(0);
+
+  const checkBalance = async () => {
+    const signerAddr = await signer.getAddress();
+    const myBalance = await snailsContract.balanceOf(signerAddr);
+    setUserBalance(parseInt(myBalance.toString()));
+  };
 
   const checkSupply = async () => {
     const mintedSupplyBN = await snailsContract.totalSupply();
     const mintedSupply = parseInt(mintedSupplyBN.toString());
     setSupply(mintedSupply);
     if (mintedSupply < 777) {
-      setTokenPrice("0");
+      setTokenPrice("0.01");
       const tokensLeft = 777 - mintedSupply;
       setCurrentPriceLeft(tokensLeft.toString());
     } else if (mintedSupply < 2000) {
@@ -58,15 +76,18 @@ const MintNft = () => {
     }
   };
 
+  React.useEffect(() => {
+    checkSupply();
+  }, [networkId]);
+
   async function mintNow() {
     // Can put better error message below mint button directly
     if (!signer) {
       alert("Connect Metamask first");
     }
-    if (chainId !== 1) {
-      alert("Wrong network. Change to Ethereum mainnet in Metamask");
-    }
-    const totalPrice = ethers.utils.parseEther(tokenPrice) * mintValue;
+    const totalPrice = ethers.utils
+      .parseEther(tokenPrice)
+      .mul(parseInt(mintValue));
     await snailsContract.mint(mintValue, { value: totalPrice });
   }
 
@@ -131,10 +152,14 @@ const MintNft = () => {
                   <input
                     className="nft-input w-100 text-center font-md fw-normal text-white"
                     placeholder="0"
-                    type="text"
+                    type="number"
+                    max="20"
                     value={mintValue}
-                    readOnly
+                    onChange={(evt) => {
+                      setMintValue(parseInt(evt.target.value));
+                    }}
                   />
+                  {valueError && <span>Mint amount error: {valueError}</span>}
                 </div>
 
                 <div className="text-center">
@@ -150,15 +175,19 @@ const MintNft = () => {
                 <button className="connect-wallet" onClick={() => mintNow()}>
                   Mint Now
                 </button>
-                <button
-                  className="connect-wallet"
-                  onClick={() => checkSupply()}
-                >
-                  Check Supply
+                <button className="light-button" onClick={() => checkSupply()}>
+                  Check Supply 🔄
                 </button>
-                <div>
-                  Minted so far: {supply}. Price: {tokenPrice}
-                </div>
+              </div>
+              <div className="mt-5 text-center text-lg-start">
+                <button className="light-button" onClick={() => checkBalance()}>
+                  Your balance 🔄:
+                </button>
+                {userBalance && (
+                  <span className="fs-md text-white ff-potta">
+                    You own {userBalance} cheeky snails.
+                  </span>
+                )}
               </div>
             </div>
           </div>

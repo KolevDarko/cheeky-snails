@@ -303,6 +303,17 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
+.light-button {
+  background-color: transparent;
+  color: white;
+  padding: 6px 12px;
+  font-size: var(--font-md);
+  border: 1px solid transparent;
+  font-family: "Potta One", cursive;
+  text-decoration: underline;
+  margin-left: 10px;
+}
+
 .connect-wallet-sm {
   font-size: var(--font-sm);
   border-radius: 20px;

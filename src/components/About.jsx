@@ -14,7 +14,6 @@ const About = () => {
         data-aos-duration="1500"
       >
         <img className="right-shade" src={rightshade} alt="" />
-        <img className="left-shade d-none d-lg-block" src={leftshade} alt="" />
         <img className="about-img" src={abooutImage} alt="abooutImage" />
         <div className="container py-sm-5 pb-5 my-5">
           <div className="about-card">
