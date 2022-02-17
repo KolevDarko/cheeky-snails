@@ -60,6 +60,9 @@ const Header = () => {
     }
     const _provider = new ethers.providers.Web3Provider(window.ethereum, "any");
     setProvider(_provider);
+    const network = await provider.getNetwork();
+    setNetworkId(network);
+    debugger;
   };
 
   React.useEffect(() => {

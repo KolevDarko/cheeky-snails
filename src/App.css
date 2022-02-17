@@ -270,6 +270,12 @@ body {
 /*=================================== NAVBAR-CSS ========================================================  *
 /* HEADER OVERLAY STYLES  */
 
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+}
+
 .navbar-wrapper .nav-list-items a {
   color: var(--color-white);
   text-decoration: none;

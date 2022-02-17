@@ -18,10 +18,21 @@ const MintNft = () => {
     if (mintValue < 20) {
       const intValue = parseInt(mintValue);
       if (isNaN(intValue)) {
-        setValueError("Amount is not a number");
+        setValueError("Mint amount is not a number");
       } else {
         setMintValue(intValue + 1);
+        setValueError(null);
       }
+    }
+  }
+
+  function mintValueHandler(value) {
+    const newVal = parseInt(value);
+    if (isNaN(newVal)) {
+      setValueError("Mint amount is not a number");
+    } else {
+      setMintValue(newVal);
+      setValueError(null);
     }
   }
 
@@ -29,9 +40,10 @@ const MintNft = () => {
     if (mintValue > 0) {
       const intValue = parseInt(mintValue);
       if (isNaN(intValue)) {
-        setValueError("Amount is not a number");
+        setValueError("Mint amount is not a number");
       } else {
         setMintValue(intValue - 1);
+        setValueError(null);
       }
     }
   }
@@ -49,41 +61,41 @@ const MintNft = () => {
   const [tokenPrice, setTokenPrice] = useState("");
   const [supply, setSupply] = useState(0);
   const [currentPriceLeft, setCurrentPriceLeft] = useState(0);
-  const [userBalance, setUserBalance] = useState(0);
-
-  const checkBalance = async () => {
-    const signerAddr = await signer.getAddress();
-    const myBalance = await snailsContract.balanceOf(signerAddr);
-    setUserBalance(parseInt(myBalance.toString()));
-  };
-
-  const checkSupply = async () => {
-    const mintedSupplyBN = await snailsContract.totalSupply();
-    const mintedSupply = parseInt(mintedSupplyBN.toString());
-    setSupply(mintedSupply);
-    if (mintedSupply < 777) {
-      setTokenPrice("0.01");
-      const tokensLeft = 777 - mintedSupply;
-      setCurrentPriceLeft(tokensLeft.toString());
-    } else if (mintedSupply < 2000) {
-      setTokenPrice("0.01");
-      const tokensLeft = 2000 - mintedSupply;
-      setCurrentPriceLeft(tokensLeft.toString());
-    } else {
-      const tokensLeft = 7777 - mintedSupply;
-      setCurrentPriceLeft(tokensLeft.toString());
-      setTokenPrice("0.02");
-    }
-  };
 
   React.useEffect(() => {
-    checkSupply();
-  }, [networkId]);
+    const updateSupply = async () => {
+      const mintedSupplyBN = await snailsContract.totalSupply();
+      const mintedSupply = parseInt(mintedSupplyBN.toString());
+      setSupply(mintedSupply);
+      if (mintedSupply < 777) {
+        setTokenPrice("0");
+        const tokensLeft = 777 - mintedSupply;
+        setCurrentPriceLeft(tokensLeft.toString());
+      } else if (mintedSupply < 2777) {
+        setTokenPrice("0.01");
+        const tokensLeft = 2000 - mintedSupply;
+        setCurrentPriceLeft(tokensLeft.toString());
+      } else {
+        const tokensLeft = 7777 - mintedSupply;
+        setCurrentPriceLeft(tokensLeft.toString());
+        setTokenPrice("0.02");
+      }
+    };
+    updateSupply();
+  }, [networkId, snailsContract]);
+
+  function validNetwork() {
+    return ["1", "4"].includes(networkId);
+  }
 
   async function mintNow() {
     // Can put better error message below mint button directly
     if (!signer) {
       alert("Connect Metamask first");
+    }
+    if (!validNetwork()) {
+      alert("Connect to ethereum mainnet network first");
+      return;
     }
     const totalPrice = ethers.utils
       .parseEther(tokenPrice)
@@ -156,7 +168,7 @@ const MintNft = () => {
                     max="20"
                     value={mintValue}
                     onChange={(evt) => {
-                      setMintValue(parseInt(evt.target.value));
+                      mintValueHandler(evt.target.value);
                     }}
                   />
                   {valueError && <span>Mint amount error: {valueError}</span>}
@@ -175,19 +187,6 @@ const MintNft = () => {
                 <button className="connect-wallet" onClick={() => mintNow()}>
                   Mint Now
                 </button>
-                <button className="light-button" onClick={() => checkSupply()}>
-                  Check Supply 🔄
-                </button>
-              </div>
-              <div className="mt-5 text-center text-lg-start">
-                <button className="light-button" onClick={() => checkBalance()}>
-                  Your balance 🔄:
-                </button>
-                {userBalance && (
-                  <span className="fs-md text-white ff-potta">
-                    You own {userBalance} cheeky snails.
-                  </span>
-                )}
               </div>
             </div>
           </div>

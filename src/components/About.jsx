@@ -1,7 +1,6 @@
 import React from "react";
 import abooutImage from "../assets/img/about-img.png";
 import rightshade from "../assets/img/right-shadow.png";
-import leftshade from "../assets/img/left-shadow.png";
 
 const About = () => {
   return (
