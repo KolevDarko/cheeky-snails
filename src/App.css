@@ -40,6 +40,8 @@ body {
   --color-black: #000000;
   --color-blue: #232c85;
   --color-light-blue: #5a25c4;
+  --color-green: #198754;
+  --color-red: #dc3545;
   --color-gradient: linear-gradient(180.21deg, #5a25c4 27.38%, #2b3dfb 99.81%);
 }
 
@@ -211,6 +213,10 @@ body {
   font-size: var(--font-sm);
   font-weight: 400;
   color: var(--color-white);
+}
+
+.text-green {
+  color: var(--color-red);
 }
 
 .cursor-pointer {

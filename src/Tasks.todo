@@ -1,0 +1,13 @@
+TODO:
+    ☐ Console log all react hooks, effects.
+
+    
+
+Scenarios to test:
+    ☐ Test coming in, metamask should not popup, right now it is because of totalSupply call
+    ☐ Coming in, on click should connect 
+    ☐ On mint, show connect metamask button
+    ☐ On mint, show wrong network if it is wrong
+    ☐ Update my network and smart contract, on Network changed
+
+    ☐ Use infura to display supply and price far? Should not be hard.

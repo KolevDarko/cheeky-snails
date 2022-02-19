@@ -87,6 +87,14 @@ const HowToBuy = () => {
                     appear in your wallet and on OpenSea!
                   </p>
                 </div>
+
+                <div className="d-flex">
+                  <p className="para-normal ff-gilory fw-medium mb-0">8.</p>
+                  <p className="para-normal ff-gilory fw-medium mb-0 ms-1 text-green">
+                    Psst! Our code is optimized so you can mint 20 snails and
+                    pay gas for only one ;)
+                  </p>
+                </div>
               </div>
             </div>
           </div>

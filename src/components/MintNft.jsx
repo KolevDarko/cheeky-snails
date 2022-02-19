@@ -49,51 +49,59 @@ const MintNft = () => {
       }
     }
   }
-  React.useEffect(() => {
-    if (signer) {
-      const currentContract = new ethers.Contract(
-        snailsContractAddress,
-        artifact.abi,
-        signer
-      );
-      setSnailsContract(currentContract);
-    }
-  }, [signer]);
 
-  const [tokenPrice, setTokenPrice] = useState("");
-  const [supply, setSupply] = useState(0);
-  const [currentPriceLeft, setCurrentPriceLeft] = useState(0);
+  const [tokenPrice, setTokenPrice] = useState("?");
+  const [supply, setSupply] = useState("?");
+  const [currentPriceLeft, setCurrentPriceLeft] = useState("?");
 
   React.useEffect(() => {
+    console.log("MINT: UPDATING SUPPLY");
     const updateSupply = async () => {
-      const mintedSupplyBN = await snailsContract.totalSupply();
-      const mintedSupply = parseInt(mintedSupplyBN.toString());
-      setSupply(mintedSupply);
-      if (mintedSupply < 777) {
-        setTokenPrice("0");
-        const tokensLeft = 777 - mintedSupply;
-        setCurrentPriceLeft(tokensLeft.toString());
-      } else if (mintedSupply < 2777) {
-        setTokenPrice("0.01");
-        const tokensLeft = 2000 - mintedSupply;
-        setCurrentPriceLeft(tokensLeft.toString());
+      if (signer) {
+        if (!validNetwork()) {
+          console.log("is wrong network???");
+          setValueError("Wrong network, please connect to ethereum mainnet");
+          return;
+        }
+        const currentContract = new ethers.Contract(
+          snailsContractAddress,
+          artifact.abi,
+          signer
+        );
+        const mintedSupplyBN = await currentContract.totalSupply();
+        const mintedSupply = parseInt(mintedSupplyBN.toString());
+        setSupply(mintedSupply);
+        if (mintedSupply < 777) {
+          setTokenPrice("0");
+          const tokensLeft = 777 - mintedSupply;
+          setCurrentPriceLeft(tokensLeft.toString());
+        } else if (mintedSupply < 2777) {
+          setTokenPrice("0.01");
+          const tokensLeft = 2000 - mintedSupply;
+          setCurrentPriceLeft(tokensLeft.toString());
+        } else {
+          const tokensLeft = 7777 - mintedSupply;
+          setCurrentPriceLeft(tokensLeft.toString());
+          setTokenPrice("0.02");
+        }
+        setSnailsContract(currentContract);
+        setValueError("");
       } else {
-        const tokensLeft = 7777 - mintedSupply;
-        setCurrentPriceLeft(tokensLeft.toString());
-        setTokenPrice("0.02");
+        setValueError("Connect metamask first");
       }
     };
     updateSupply();
-  }, [networkId, snailsContract]);
+  }, [signer, networkId]);
 
   function validNetwork() {
-    return ["1", "4"].includes(networkId);
+    return [1, 4].includes(networkId);
   }
 
   async function mintNow() {
     // Can put better error message below mint button directly
-    if (!signer) {
+    if (!snailsContract) {
       alert("Connect Metamask first");
+      return;
     }
     if (!validNetwork()) {
       alert("Connect to ethereum mainnet network first");
@@ -173,7 +181,11 @@ const MintNft = () => {
                       mintValueHandler(evt.target.value);
                     }}
                   />
-                  {valueError && <span>Mint amount error: {valueError}</span>}
+                  {valueError && (
+                    <div className="text-center para-normal text-white">
+                      <span>{valueError}</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="text-center">

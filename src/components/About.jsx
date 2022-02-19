@@ -16,7 +16,7 @@ const About = () => {
         <img className="about-img" src={abooutImage} alt="abooutImage" />
         <div className="container py-sm-5 pb-5 my-5">
           <div className="about-card">
-            <h2 className="about-heading mb-sm-4">About Project</h2>
+            <h2 className="about-heading mb-sm-4">About the project</h2>
             <p className="para-normal ff-gilory">
               After months of hard work and gathering data, our cheeky snails
               are ready and lined up on their starting position, waiting on your
