@@ -12,11 +12,11 @@ export const faqData = [
     question: "Q3. What is the price per cheeky snail?",
     answer: `The first 777 will be free + gas; the next 2000 will cost 0.01ETH + gas;
     the remaining supply will cost 0.02ETH + gas.
-    No matter how many snails you mint per transactions, you will pay gas as `,
+    No matter how many snails you mint per transaction, you will pay gas as a single mint.`,
   },
   {
     question: "Q4. How many snails can I mint per transaction?",
-    answer: `Maximum 10 snails for the first 777, while they're free. Then 20 per transactions.`,
+    answer: `Maximum 10 snails for the first 777, while they're free. Then 20 per transaction.`,
   },
   {
     question: "Q5. When is reveal time?",

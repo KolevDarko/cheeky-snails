@@ -123,8 +123,8 @@ const MintNft = () => {
               className="col-lg-7 col-10 text-center pb-4 pb-lg-0"
               data-aos="fade-right"
               data-aos-anchor-placement="top-left"
-              data-aos-delay="500"
-              data-aos-duration="1500"
+              data-aos-delay="100"
+              data-aos-duration="500"
             >
               <img className="w-100" src={mintNftimg} alt="mintNftimg" />
             </div>
@@ -132,8 +132,8 @@ const MintNft = () => {
               className="col-lg-5 col-12 d-flex flex-column justify-content-center"
               data-aos="fade-left"
               data-aos-anchor-placement="top-left"
-              data-aos-delay="500"
-              data-aos-duration="1500"
+              data-aos-delay="100"
+              data-aos-duration="500"
             >
               <h2 className="heading text-white ff-potta mb-3">Mint NFT</h2>
               <div className="d-flex justify-content-between mt-lg-5">

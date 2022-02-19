@@ -20,8 +20,8 @@ const Lap = () => {
                 className="d-flex flex-column flex-md-row"
                 data-aos="fade-right"
                 data-aos-anchor-placement="top-center"
-                data-aos-delay="500"
-                data-aos-duration="1500"
+                data-aos-delay="100"
+                data-aos-duration="500"
               >
                 <div>
                   <img src={Lap1} alt="lap-1-img" />
@@ -47,8 +47,8 @@ const Lap = () => {
                 className="d-flex flex-column flex-md-row mt-5"
                 data-aos="fade-left"
                 data-aos-anchor-placement="top-center"
-                data-aos-delay="500"
-                data-aos-duration="1500"
+                data-aos-delay="100"
+                data-aos-duration="500"
               >
                 <div>
                   <img src={Lap2} alt="lap-2-img" />
@@ -75,8 +75,8 @@ const Lap = () => {
                 className="d-flex flex-column flex-md-row mt-5"
                 data-aos="fade-right"
                 data-aos-anchor-placement="top-center"
-                data-aos-delay="500"
-                data-aos-duration="1500"
+                data-aos-delay="100"
+                data-aos-duration="500"
               >
                 <div>
                   <img src={Lap3} alt="lap-3-img" />
@@ -101,8 +101,8 @@ const Lap = () => {
                 className="d-flex flex-column flex-md-row mt-5"
                 data-aos="fade-left"
                 data-aos-anchor-placement="top-center"
-                data-aos-delay="500"
-                data-aos-duration="1500"
+                data-aos-delay="100"
+                data-aos-duration="500"
               >
                 <div>
                   <img src={Lap4} alt="lap-4-img" />

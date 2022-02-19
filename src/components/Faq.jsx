@@ -20,8 +20,8 @@ const Faq = () => {
     <>
       <section
         data-aos="fade-down"
-        data-aos-delay="500"
-        data-aos-duration="1500"
+        data-aos-delay="100"
+        data-aos-duration="500"
         className="bg-faq-img py-sm-5 pt-5 pb-0 position-relative"
         id="faq"
       >
@@ -33,8 +33,8 @@ const Faq = () => {
           <h1
             className="heading color-white ff-potta mb-5 pb-2 ps-3 ms-1"
             data-aos="fade-right"
-            data-aos-delay="500"
-            data-aos-duration="1500"
+            data-aos-delay="100"
+            data-aos-duration="500"
           >
             FAQs
           </h1>

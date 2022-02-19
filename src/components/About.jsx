@@ -9,8 +9,8 @@ const About = () => {
         className="position-relative py-5"
         id="about"
         data-aos="flip-down"
-        data-aos-delay="500"
-        data-aos-duration="1500"
+        data-aos-delay="100"
+        data-aos-duration="500"
       >
         <img className="right-shade" src={rightshade} alt="" />
         <img className="about-img" src={abooutImage} alt="abooutImage" />

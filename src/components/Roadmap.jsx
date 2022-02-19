@@ -10,8 +10,8 @@ const Roadmap = () => {
           className="container"
           data-aos="fade-left"
           data-aos-anchor-placement="top-center"
-          data-aos-delay="500"
-          data-aos-duration="1500"
+          data-aos-delay="100"
+          data-aos-duration="500"
         >
           <h2 className="heading text-white ff-potta mt-sm-5">RoadMap</h2>
         </div>
@@ -19,8 +19,8 @@ const Roadmap = () => {
           className="container d-none d-lg-block py-5 mt-lg-5"
           data-aos="fade-up"
           data-aos-anchor-placement="top-center"
-          data-aos-delay="500"
-          data-aos-duration="1500"
+          data-aos-delay="100"
+          data-aos-duration="500"
         >
           <div className="d-flex justify-content-between">
             <div className="text-center px-2">
