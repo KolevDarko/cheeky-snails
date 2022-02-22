@@ -2,10 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Snowfall from "react-snowfall";
 import heroSnailImage from "../assets/img/hero-snail-img.png";
-import moment from "moment";
 const Hero = () => {
   const [untilLaunch, setUntilLaunch] = React.useState();
-  var launchDate = moment.utc("2022-02-22T23:30:00");
+  var launchDate = new Date("2022-02-22T23:30:00+00:00");
   React.useEffect(() => {
     setInterval(() => {
       const now = new Date();
