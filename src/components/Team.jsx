@@ -67,38 +67,48 @@ const Team = () => {
 
                   <Slider {...settings}>
                     <div>
-                      <div className="team-card mx-3 mx-xl-4 py-1">
-                        <div className="team-img-parent">
-                          <img
-                            className="w-100 h-100 mx-auto object-fit-cover"
-                            src={miyagisan1}
-                            alt="team-img-1"
-                          />
+                      <a
+                        href="https://twitter.com/miyagisan_eth"
+                        target="_blank"
+                      >
+                        <div className="team-card mx-3 mx-xl-4 py-1">
+                          <div className="team-img-parent">
+                            <img
+                              className="w-100 h-100 mx-auto object-fit-cover"
+                              src={miyagisan1}
+                              alt="team-img-1"
+                            />
+                          </div>
+                          <div className="text-center team-text-content">
+                            <h2 className="team-heading ff-potta">MiyagiSan</h2>
+                            <p className="team-para ff-gilory">(Founder)</p>
+                          </div>
                         </div>
-                        <div className="text-center team-text-content">
-                          <h2 className="team-heading ff-potta">MiyagiSan</h2>
-                          <p className="team-para ff-gilory">(Founder)</p>
-                        </div>
-                      </div>
+                      </a>
                     </div>
                     <div>
-                      <div className="team-card mx-3 mx-xl-4 py-1">
-                        <div className="team-img-parent">
-                          <img
-                            className="w-100 h-100 mx-auto object-fit-cover"
-                            src={professorSnail1}
-                            alt="img"
-                          />
+                      <a
+                        href="https://twitter.com/proffesorSnaill"
+                        target="_blank"
+                      >
+                        <div className="team-card mx-3 mx-xl-4 py-1">
+                          <div className="team-img-parent">
+                            <img
+                              className="w-100 h-100 mx-auto object-fit-cover"
+                              src={professorSnail1}
+                              alt="img"
+                            />
+                          </div>
+                          <div className="text-center team-text-content">
+                            <h2 className="team-heading ff-potta">
+                              ProfessorSnail
+                            </h2>
+                            <p className="team-para ff-gilory">
+                              (Co-founder & Community manager)
+                            </p>
+                          </div>
                         </div>
-                        <div className="text-center team-text-content">
-                          <h2 className="team-heading ff-potta">
-                            ProfessorSnail
-                          </h2>
-                          <p className="team-para ff-gilory">
-                            (Co-founder & Community manager)
-                          </p>
-                        </div>
-                      </div>
+                      </a>
                     </div>
                     <div>
                       <div className="team-card mx-3 mx-xl-4 py-1">

@@ -1,7 +1,8 @@
 import React from "react";
 import footersnailimg from "../assets/img/footer-snail.png";
-import { DiscordIcon, TwitterIcon, OpenSeaIcon } from "./common/Icons";
+import { DiscordIcon, TwitterIcon } from "./common/Icons";
 import logo from "../assets/img/logo.png";
+import openSeaBlack from "../assets/img/OpenSeaBlack.png";
 
 const Footer = () => {
   return (
@@ -37,7 +38,7 @@ const Footer = () => {
                 rel="noreferrer"
                 target="_blank"
               >
-                <OpenSeaIcon />
+                <img src={openSeaBlack} alt="Open Sea" />
               </a>
             </div>
           </div>
