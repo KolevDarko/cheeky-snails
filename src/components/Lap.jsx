@@ -62,11 +62,11 @@ const Lap = () => {
                     are launching another collection of exactly the same snails,
                     but pixelated. These little fellas will be free of charge
                     for the holders of Cheeky Snails. The next step will be the
-                    integration of these fellas into the metaverse. For example,
-                    we will buy a land for our business and fully integrate
-                    cheeky snails as pets in the world wide metaverse. Over
-                    there, each owner will be able to train and battle his snail
-                    vs other player's pets.
+                    integration of these fellas into some of the most prominent
+                    metaverses. For example, we will buy a land for our business
+                    and fully integrate cheeky snails as pets in the
+                    worldwidewebb’s metaverse. Over there, each owner will be
+                    able to train and battle his snail vs other player's pets.
                   </p>
                 </div>
               </div>
