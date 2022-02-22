@@ -55,11 +55,11 @@ const Hero = () => {
                   </button>
                 </div>
               </div>
-              <p className="mb-0 mt-4 hero-small-para py-2">
+              <div className="mb-0 mt-4 hero-small-para py-2">
                 <h3 className="sub-heading text-white ff-potta">
                   Launch timer: {untilLaunch}
                 </h3>
-              </p>
+              </div>
             </div>
             <div
               className="col-lg-6 col-12 d-flex flex-column justify-content-center order-1 order-lg-2"

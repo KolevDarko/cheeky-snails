@@ -11,7 +11,7 @@ const artifact = require("./abi.json");
 const snailsContractAddress = "0xb6f31a89ebd346c79a39aa0381e425ff3600daa5";
 
 const MintNft = () => {
-  const [mintValue, setMintValue] = useState(0);
+  const [mintValue, setMintValue] = useState(10);
   const [snailsContract, setSnailsContract] = useState(null);
   const { signer, networkId } = useAuthProvider();
   const [valueError, setValueError] = useState();
