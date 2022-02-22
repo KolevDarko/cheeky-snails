@@ -25,7 +25,7 @@ const Footer = () => {
               <a href="https://twitter.com/Thecheekysnails">
                 <TwitterIcon />
               </a>
-              <a href="https://discord.gg/xVqG65et">
+              <a href="#">
                 <DiscordIcon />
               </a>
             </div>

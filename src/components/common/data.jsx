@@ -26,7 +26,7 @@ export const faqData = [
     answer: `Each snail you buy will be revealed instantly on your OpenSea account.`,
   },
   {
-    question: "Q7. How many snails will be reserved for the team??",
+    question: "Q7. How many snails will be reserved for the team?",
     answer: `Zero. This is a collection for the community and driven by the community. Though, 50 snails will be held for giveaways and contests, as well as for compensation of the community members that unfortunately lost their snail in a proven scam.`,
   },
 ];
