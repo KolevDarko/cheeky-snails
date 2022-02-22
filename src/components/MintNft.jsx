@@ -58,7 +58,7 @@ const MintNft = () => {
       if (signer) {
         if (!validNetwork()) {
           console.log("is wrong network???");
-          setValueError("Wrong network, please connect to ethereum mainnet");
+          setValueError("Please connect your wallet to ethereum mainnet");
           return;
         }
         const currentContract = new ethers.Contract(

@@ -1,6 +1,6 @@
 import React from "react";
 import footersnailimg from "../assets/img/footer-snail.png";
-import { DiscordIcon, TwitterIcon } from "./common/Icons";
+import { DiscordIcon, TwitterIcon, OpenSeaIcon } from "./common/Icons";
 import logo from "../assets/img/logo.png";
 
 const Footer = () => {
@@ -22,11 +22,22 @@ const Footer = () => {
               <img src={logo} alt="logo" />
             </a>
             <div className="d-flex align-items-center justify-content-center mt-4 mt-sm-5 pt-1 footer-svgs">
-              <a href="https://twitter.com/Thecheekysnails">
+              <a
+                href="https://twitter.com/Thecheekysnails"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <TwitterIcon />
               </a>
               <a href="#">
                 <DiscordIcon />
+              </a>
+              <a
+                href="https://opensea.io/collection/cheeky-snails"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <OpenSeaIcon />
               </a>
             </div>
           </div>
