@@ -6,9 +6,7 @@ import { ethers } from "ethers";
 import { useAuthProvider } from "../contexts/AuthProvider";
 
 const artifact = require("./abi.json");
-// const snailsContractAddress = "0xd7845aD98B7A7565AE851f81eDB8Dc3Ef443d136";
-// Rinkeby
-const snailsContractAddress = "0xb6f31a89ebd346c79a39aa0381e425ff3600daa5";
+const snailsContractAddress = "0xF656B8ba8bd6edd8146F9D34a783Cd87382A36D9";
 
 const MintNft = () => {
   const [mintValue, setMintValue] = useState(10);
@@ -94,7 +92,7 @@ const MintNft = () => {
   }, [signer, networkId]);
 
   function validNetwork() {
-    return [1, 4].includes(networkId);
+    return networkId === 1;
   }
 
   async function mintNow() {
