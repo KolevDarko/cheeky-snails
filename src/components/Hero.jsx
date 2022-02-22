@@ -1,6 +1,6 @@
 import React from "react";
-import ReactDOM from 'react-dom'
-import Snowfall from 'react-snowfall'
+import ReactDOM from "react-dom";
+import Snowfall from "react-snowfall";
 import heroSnailImage from "../assets/img/hero-snail-img.png";
 const Hero = () => {
   return (
@@ -41,7 +41,7 @@ const Hero = () => {
               </div>
               <p className="mb-0 mt-4 hero-small-para py-2">Launch Date:</p>
               <h3 className="sub-heading text-white ff-potta">
-                28th FEB, 2022
+                22th FEB, 2022
               </h3>
             </div>
             <div

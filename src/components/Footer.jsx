@@ -18,19 +18,15 @@ const Footer = () => {
         </div>
         <div className="container py-5">
           <div className="text-center">
-            <a href="#">
+            <a href="https://cheekysnails.com">
               {" "}
-              <img src={logo} alt="" />
+              <img src={logo} alt="logo" />
             </a>
             <div className="d-flex align-items-center justify-content-center mt-4 mt-sm-5 pt-1 footer-svgs">
-              <a href="https://www.twitter.com/">
+              <a href="https://twitter.com/Thecheekysnails">
                 <TwitterIcon />
               </a>
-              <a className="mx-3 px-1" href="https://www.instagram.com/">
-                {" "}
-                <InstagramIcon />
-              </a>
-              <a href="https://www.discord.com/">
+              <a href="https://discord.gg/xVqG65et">
                 <DiscordIcon />
               </a>
             </div>

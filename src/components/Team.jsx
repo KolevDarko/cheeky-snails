@@ -4,7 +4,7 @@ import miyagisan1 from "../assets/img/miyagisan1.png";
 import engineer1 from "../assets/img/engineer-1.png";
 import professorSnail1 from "../assets/img/professorSnail1.png";
 import Achilles from "../assets/img/Achilles.png";
-import Arwen from "../assets/img/Arwen.png";
+import Bobo from "../assets/img/BoboXart.png";
 import rightshade from "../assets/img/right-shadow-2.png";
 import leftshade from "../assets/img/left-shadow-2.png";
 
@@ -94,7 +94,9 @@ const Team = () => {
                           <h2 className="team-heading ff-potta">
                             ProfessorSnail
                           </h2>
-                          <p className="team-para ff-gilory">(Co-founder & Community manager)</p>
+                          <p className="team-para ff-gilory">
+                            (Co-founder & Community manager)
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -109,7 +111,9 @@ const Team = () => {
                         </div>
                         <div className="text-center team-text-content">
                           <h2 className="team-heading ff-potta">TheEngineer</h2>
-                          <p className="team-para ff-gilory mb-0">(Co-founder & Developer)</p>
+                          <p className="team-para ff-gilory mb-0">
+                            (Co-founder & Developer)
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -118,12 +122,12 @@ const Team = () => {
                         <div className="team-img-parent">
                           <img
                             className="w-100 h-100 mx-auto object-fit-cover"
-                            src={Arwen}
+                            src={Bobo}
                             alt="img"
                           />
                         </div>
                         <div className="text-center team-text-content">
-                          <h2 className="team-heading ff-potta">Arwen</h2>
+                          <h2 className="team-heading ff-potta">BoboXart</h2>
                           <p className="team-para ff-gilory">
                             (Co-founder & Designer)
                           </p>
@@ -140,16 +144,13 @@ const Team = () => {
                           />
                         </div>
                         <div className="text-center team-text-content">
-                          <h2 className="team-heading ff-potta">
-                            Achilles
-                          </h2>
+                          <h2 className="team-heading ff-potta">Achilles</h2>
                           <p className=" font-normal team-para">
                             (Co-founder & Marketing specialist)
                           </p>
                         </div>
                       </div>
                     </div>
-
                   </Slider>
                 </div>{" "}
               </div>
