@@ -1,7 +1,6 @@
 import React from "react";
 import footersnailimg from "../assets/img/footer-snail.png";
 import { DiscordIcon, TwitterIcon } from "./common/Icons";
-import { InstagramIcon } from "./common/Icons";
 import logo from "../assets/img/logo.png";
 
 const Footer = () => {
