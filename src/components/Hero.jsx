@@ -3,22 +3,6 @@ import ReactDOM from "react-dom";
 import Snowfall from "react-snowfall";
 import heroSnailImage from "../assets/img/hero-snail-img.png";
 const Hero = () => {
-  const [untilLaunch, setUntilLaunch] = React.useState();
-  var launchDate = new Date("2022-02-22T23:30:00+00:00");
-  React.useEffect(() => {
-    setInterval(() => {
-      const now = new Date();
-      const timeLeft = launchDate.valueOf() - now.valueOf();
-      const hoursLeft = Math.floor(timeLeft / 3600000);
-      const minutesLeft = Math.floor((timeLeft - hoursLeft * 3600000) / 60000);
-      const secondsLeft = Math.floor(
-        (timeLeft - hoursLeft * 3600000 - minutesLeft * 60000) / 1000
-      );
-      const timeLeftUI = `${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
-      setUntilLaunch(timeLeftUI);
-    }, 1000);
-  });
-
   return (
     <>
       <section className="hero-section position-relative">
@@ -57,7 +41,7 @@ const Hero = () => {
               </div>
               <div className="mb-0 mt-4 hero-small-para py-2">
                 <h3 className="sub-heading text-white ff-potta">
-                  Launch timer: {untilLaunch}
+                  Mint active!
                 </h3>
               </div>
             </div>

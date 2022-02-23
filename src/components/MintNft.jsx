@@ -75,7 +75,7 @@ const MintNft = () => {
           setCurrentPriceLeft(tokensLeft.toString());
         } else if (mintedSupply < 2777) {
           setTokenPrice("0.01");
-          const tokensLeft = 2000 - mintedSupply;
+          const tokensLeft = 2777 - mintedSupply;
           setCurrentPriceLeft(tokensLeft.toString());
         } else {
           const tokensLeft = 7777 - mintedSupply;
